@@ -53,7 +53,7 @@
     var dots = carousel.querySelectorAll('.carousel__dot');
     var current = 0;
     var timer = null;
-    var INTERVAL = 3000;
+    var INTERVAL = 5000;
 
     var restartDotFill = function(dot){
       // force a reflow so the CSS fill animation restarts cleanly even if
@@ -95,6 +95,14 @@
     // which is the accessibility escape hatch, so this isn't gated on
     // prefers-reduced-motion the way the zoom/fill effects are (see CSS).
     start();
+  }
+
+  // Open the first FAQ item by default — gives the section visual weight on load
+  var firstFaqBtn = document.querySelector('.faq-item:first-child .faq-item__q');
+  var firstFaqPanel = firstFaqBtn ? firstFaqBtn.closest('.faq-item').querySelector('.faq-item__a') : null;
+  if (firstFaqBtn && firstFaqPanel) {
+    firstFaqBtn.setAttribute('aria-expanded', 'true');
+    firstFaqPanel.style.height = firstFaqPanel.scrollHeight + 'px';
   }
 
   // Scroll-triggered reveals
