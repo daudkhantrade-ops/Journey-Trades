@@ -124,7 +124,7 @@ button{ font:inherit; background:none; border:none; cursor:pointer; color:inheri
   transition:background 260ms var(--ease), border-color 260ms var(--ease);
 }
 .nav.is-scrolled{ background:#0B1424; border-bottom-color:rgba(243,240,232,0.22); }
-.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; }
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; padding-inline:clamp(2rem, 5vw, 5rem); }
 .nav__brand{ display:flex; align-items:center; gap:10px; }
 .nav__mark{ display:inline-flex; align-items:center; justify-content:center; width:28px; height:34px; color:var(--text-paper); transition:transform 260ms var(--ease); }
 .nav__brand:hover .nav__mark{ transform:translateY(-2px); }
@@ -192,8 +192,8 @@ body.menu-open{ overflow:hidden; }
 .hero__trust-item{ font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.06em; color:var(--text-paper); text-transform:uppercase; text-shadow:0 1px 8px rgba(11,20,36,0.6); opacity:0.95; }
 
 .carousel__track{ position:relative; width:100%; height:100%; }
-.carousel__slide{ position:absolute; inset:0; margin:0; opacity:0; visibility:hidden; transition:opacity 1800ms linear, visibility 0s linear 1800ms; will-change:opacity; }
-.carousel__slide.is-active{ opacity:1; visibility:visible; z-index:2; transition:opacity 1800ms linear; }
+.carousel__slide{ position:absolute; inset:0; margin:0; opacity:0; visibility:hidden; transition:opacity 2500ms linear, visibility 0s linear 2500ms; will-change:opacity; }
+.carousel__slide.is-active{ opacity:1; visibility:visible; z-index:2; transition:opacity 2500ms linear; }
 /* Ken Burns zoom reduced to 1.03 (from 1.06) — large hero images animating at 1.06 causes repaint jank on desktop */
 .carousel__photo{ width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block; transform:scale(1.03); transition:transform 5000ms linear; will-change:transform; }
 .carousel__slide.is-active .carousel__photo{ transform:scale(1); }
@@ -226,6 +226,8 @@ body.menu-open{ overflow:hidden; }
 @media (max-width:760px){
   .hero{ min-height:72vh; padding-block:var(--space-48) var(--space-40); }
   .hero__inner{ padding-inline:1.5rem; }
+  .nav__inner{ padding-inline:1.5rem; }
+  .page-header__inner{ padding-inline:1.5rem; }
   .hero__title{ font-size:clamp(2.1rem, 8.5vw, 3rem); line-height:1.04; letter-spacing:-0.02em; }
   .hero__title em::after{ bottom:-4px; height:3px; box-shadow:0 0 12px rgba(193,121,62,0.7); }
   .hero__sub{ font-size:1.02rem; margin-top:var(--space-20); line-height:1.55; }
@@ -397,7 +399,7 @@ body.menu-open{ overflow:hidden; }
 
 /* fade-up */
 /* fade-up — hint removed; IntersectionObserver adds is-visible once and then unobserves, so permanent will-change would waste GPU memory */
-.fade-up{ opacity:0; transform:translateY(26px) scale(0.985); transition:opacity 800ms var(--ease-out), transform 800ms var(--ease-out); }
+.fade-up{ opacity:0; transform:translateY(26px) scale(0.985); transition:opacity 1100ms var(--ease-out), transform 1100ms var(--ease-out); }
 .fade-up.is-visible{ opacity:1; transform:translateY(0) scale(1); }
 
 /* entry-rule: process step connector draws in on scroll */
@@ -414,7 +416,7 @@ body.menu-open{ overflow:hidden; }
   background-image:radial-gradient(circle at 1px 1px, rgba(243,240,232,0.06) 1px, transparent 0);
   background-size:28px 28px; pointer-events:none;
 }
-.page-header__inner{ position:relative; z-index:1; max-width:44rem; }
+.page-header__inner{ position:relative; z-index:1; max-width:44rem; margin-inline:0; padding-inline:clamp(2rem, 5vw, 5rem); }
 .page-header__kicker{ font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.12em; text-transform:uppercase; color:var(--muted-dark); margin-bottom:var(--space-12); }
 .page-header__title{ font-size:var(--text-h1); color:var(--text-paper); font-weight:700; }
 .page-header__lead{ font-size:var(--text-lg); color:var(--muted-dark); max-width:36rem; margin-top:var(--space-20); line-height:1.65; }
