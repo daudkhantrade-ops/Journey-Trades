@@ -124,7 +124,7 @@ button{ font:inherit; background:none; border:none; cursor:pointer; color:inheri
   transition:background 260ms var(--ease), border-color 260ms var(--ease);
 }
 .nav.is-scrolled{ background:#0B1424; border-bottom-color:rgba(243,240,232,0.22); }
-.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; padding-inline:clamp(2rem, 5vw, 5rem); }
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; padding-inline:clamp(2rem, 5vw, 5rem); max-width:none; margin:0; }
 .nav__brand{ display:flex; align-items:center; gap:10px; }
 .nav__mark{ display:inline-flex; align-items:center; justify-content:center; width:28px; height:34px; color:var(--text-paper); transition:transform 260ms var(--ease); }
 .nav__brand:hover .nav__mark{ transform:translateY(-2px); }
@@ -224,7 +224,7 @@ body.menu-open{ overflow:hidden; }
 /* Mobile-only hero tuning — slightly shorter, slightly smaller headline, tighter rhythm.
    Desktop hero is untouched. Visual identity preserved. */
 @media (max-width:760px){
-  .hero{ min-height:72vh; padding-block:var(--space-48) var(--space-40); }
+  .hero{ min-height:auto; padding-block:var(--space-48) var(--space-32); align-items:flex-start; }
   .hero__inner{ padding-inline:1.5rem; }
   .nav__inner{ padding-inline:1.5rem; }
   .page-header__inner{ padding-inline:1.5rem; }
@@ -416,9 +416,9 @@ body.menu-open{ overflow:hidden; }
   background-image:radial-gradient(circle at 1px 1px, rgba(243,240,232,0.06) 1px, transparent 0);
   background-size:28px 28px; pointer-events:none;
 }
-.page-header__inner{ position:relative; z-index:1; max-width:44rem; margin-inline:0; padding-inline:clamp(2rem, 5vw, 5rem); }
+.page-header__inner{ position:relative; z-index:1; padding-inline:clamp(2rem, 5vw, 5rem); max-width:none; margin:0; }
 .page-header__kicker{ font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.12em; text-transform:uppercase; color:var(--muted-dark); margin-bottom:var(--space-12); }
-.page-header__title{ font-size:var(--text-h1); color:var(--text-paper); font-weight:700; }
+.page-header__title{ font-size:var(--text-h1); color:var(--text-paper); font-weight:700; max-width:48rem; }
 .page-header__lead{ font-size:var(--text-lg); color:var(--muted-dark); max-width:36rem; margin-top:var(--space-20); line-height:1.65; }
 .page-header__actions{ display:flex; flex-wrap:wrap; gap:var(--space-16); margin-top:var(--space-32); }
 
