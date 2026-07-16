@@ -47,14 +47,13 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // Hero image carousel — loops every 3s, pauses on hover/focus and reduced motion
-  var carousel = document.querySelector('.hero__carousel');
+  var carousel = document.querySelector('.hero__bg');
   if (carousel) {
     var slides = carousel.querySelectorAll('.carousel__slide');
     var dots = carousel.querySelectorAll('.carousel__dot');
     var current = 0;
     var timer = null;
     var INTERVAL = 3000;
-    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     var restartDotFill = function(dot){
       // force a reflow so the CSS fill animation restarts cleanly even if
@@ -75,7 +74,6 @@
     };
     var advance = function(){ show(current + 1); };
     var start = function(){
-      if (reducedMotion) return;
       stop();
       carousel.classList.remove('is-paused');
       timer = window.setInterval(advance, INTERVAL);
@@ -93,11 +91,10 @@
     carousel.addEventListener('focusin', stop);
     carousel.addEventListener('focusout', start);
 
-    if (reducedMotion) {
-      carousel.classList.add('is-paused');
-    } else {
-      start();
-    }
+    // Autoplay always runs — hover/focus/click still gives full manual control,
+    // which is the accessibility escape hatch, so this isn't gated on
+    // prefers-reduced-motion the way the zoom/fill effects are (see CSS).
+    start();
   }
 
   // Scroll-triggered reveals
