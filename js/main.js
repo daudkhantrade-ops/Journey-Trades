@@ -5,22 +5,66 @@
     document.querySelectorAll('animateMotion').forEach(function(el){ el.remove(); });
   }
 
-  // Mobile nav toggle
+  // Mobile nav toggle — full implementation: open/close, scroll lock, Escape, click-outside, focus return
   var menuToggle = document.getElementById('menu-toggle');
   var mobileMenu = document.getElementById('mobile-menu');
   if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function(){
-      var open = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!open));
-      mobileMenu.setAttribute('aria-hidden', String(open));
-      document.body.classList.toggle('menu-open', !open);
-    });
-    mobileMenu.querySelectorAll('a').forEach(function(a){
+    var mobileLinks = mobileMenu.querySelectorAll('a');
+    var lastFocused = null;
+
+    var openMenu = function(){
+      lastFocused = document.activeElement;
+      menuToggle.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('menu-open');
+      // Move focus into the menu for keyboard users
+      var firstLink = mobileMenu.querySelector('a');
+      if (firstLink) { firstLink.focus(); }
+    };
+
+    var closeMenu = function(){
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+      // Return focus to the toggle so the user doesn't lose their place
+      if (lastFocused && typeof lastFocused.focus === 'function') {
+        lastFocused.focus();
+      } else {
+        menuToggle.focus();
+      }
+    };
+
+    var toggleMenu = function(){
+      var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      if (isOpen) { closeMenu(); } else { openMenu(); }
+    };
+
+    menuToggle.addEventListener('click', function(e){ e.preventDefault(); toggleMenu(); });
+
+    // Close after selecting any link inside the menu
+    mobileLinks.forEach(function(a){
       a.addEventListener('click', function(){
-        menuToggle.setAttribute('aria-expanded','false');
-        mobileMenu.setAttribute('aria-hidden','true');
-        document.body.classList.remove('menu-open');
+        // Defer close so the browser can navigate (or so the click registers on hash-link pages)
+        window.setTimeout(closeMenu, 0);
       });
+    });
+
+    // Click outside the menu (on the dark overlay/background of the menu itself) closes it
+    mobileMenu.addEventListener('click', function(e){
+      if (e.target === mobileMenu) { closeMenu(); }
+    });
+
+    // Escape key closes the menu — works anywhere on the page while menu is open
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+        closeMenu();
+      }
+    });
+
+    // If the viewport grows back to desktop while the menu is open, close it cleanly
+    var desktopMQ = window.matchMedia('(min-width: 961px)');
+    desktopMQ.addEventListener('change', function(e){
+      if (e.matches && document.body.classList.contains('menu-open')) { closeMenu(); }
     });
   }
 
