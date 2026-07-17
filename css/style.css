@@ -76,7 +76,7 @@ img,svg{ display:block; max-width:100%; }
 ul{ margin:0; padding:0; list-style:none; }
 button{ font:inherit; background:none; border:none; cursor:pointer; color:inherit; }
 
-.container{ max-width:var(--container); margin:0 auto; padding-inline:var(--pad); }
+.container{ max-width:var(--container); margin:0; padding-inline:var(--pad); }
 .container, [class*="__grid"], [class*="__layout"], [class*="__inner"], [class*="__steps"]{ min-width:0; }
 [class*="__grid"] > *, [class*="__layout"] > *, [class*="__steps"] > *{ min-width:0; }
 
