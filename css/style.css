@@ -181,12 +181,12 @@ body.menu-open{ overflow:hidden; }
     /* top vignette for nav legibility, soft bottom vignette for caption polish */
     linear-gradient(180deg, rgba(11,20,36,0.42) 0%, transparent 14%, transparent 86%, rgba(11,20,36,0.22) 100%);
 }
-.hero__inner{ position:relative; z-index:2; width:100%; max-width:var(--container); margin:0 auto; padding-inline:var(--pad); }
-.hero__content{ max-width:34rem; will-change:transform; }
-.hero__title{ font-size:clamp(3rem, 7vw, 5.75rem); color:var(--text-paper); font-weight:700; line-height:1.02; letter-spacing:-0.025em; text-shadow:0 2px 36px rgba(11,20,36,0.75), 0 1px 14px rgba(11,20,36,0.6), 0 0 1px rgba(11,20,36,0.95); }
+.hero__inner{ position:relative; z-index:2; width:100%; max-width:var(--container); margin:0 auto; padding-inline:clamp(2.5rem, 4vw, 4rem); }
+.hero__content{ max-width:38rem; will-change:transform; }
+.hero__title{ font-size:clamp(3.2rem, 7.5vw, 6.25rem); color:var(--text-paper); font-weight:700; line-height:1.02; letter-spacing:-0.025em; text-shadow:0 2px 36px rgba(11,20,36,0.75), 0 1px 14px rgba(11,20,36,0.6), 0 0 1px rgba(11,20,36,0.95); }
 .hero__title em{ font-style:normal; color:var(--signal); position:relative; display:inline-block; }
 .hero__title em::after{ content:''; position:absolute; left:0; right:0; bottom:-8px; height:4px; background:var(--signal); border-radius:2px; box-shadow:0 0 18px rgba(193,121,62,0.8); }
-.hero__sub{ font-size:1.2rem; color:var(--text-paper); max-width:32rem; margin-top:var(--space-32); line-height:1.55; text-shadow:0 1px 18px rgba(11,20,36,0.8), 0 0 1px rgba(11,20,36,0.95); opacity:0.98; font-weight:500; }
+.hero__sub{ font-size:1.25rem; color:var(--text-paper); max-width:34rem; margin-top:var(--space-32); line-height:1.55; text-shadow:0 1px 18px rgba(11,20,36,0.8), 0 0 1px rgba(11,20,36,0.95); opacity:0.98; font-weight:500; }
 .hero__actions{ display:flex; flex-wrap:wrap; gap:var(--space-16); margin-top:var(--space-40); }
 .hero__trust{ display:flex; flex-wrap:wrap; gap:var(--space-16) var(--space-24); margin-top:var(--space-48); padding-top:var(--space-24); border-top:1px solid rgba(243,240,232,0.32); }
 .hero__trust-item{ font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.06em; color:var(--text-paper); text-transform:uppercase; text-shadow:0 1px 8px rgba(11,20,36,0.6); opacity:0.95; }
