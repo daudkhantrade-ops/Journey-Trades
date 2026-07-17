@@ -124,7 +124,7 @@ button{ font:inherit; background:none; border:none; cursor:pointer; color:inheri
   transition:background 260ms var(--ease), border-color 260ms var(--ease);
 }
 .nav.is-scrolled{ background:#0B1424; border-bottom-color:rgba(243,240,232,0.22); }
-.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; }
+.nav__inner{ display:flex; align-items:center; justify-content:space-between; height:4.5rem; padding-inline:clamp(2rem, 8vw, 7rem); max-width:none; margin:0; }
 .nav__brand{ display:flex; align-items:center; gap:10px; }
 .nav__mark{ display:inline-flex; align-items:center; justify-content:center; width:28px; height:34px; color:var(--text-paper); transition:transform 260ms var(--ease); }
 .nav__brand:hover .nav__mark{ transform:translateY(-2px); }
